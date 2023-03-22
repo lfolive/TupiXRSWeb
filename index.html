@@ -6,63 +6,87 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="css/my_styles.css">
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-      <!--<script type="text/javascript" src="lib/jquery_plantuml.js"></script>-->
-      <script type="text/javascript" src="http://www.plm-interop.net/html/js/jquery/jquery_plantuml.js"></script>
-      <!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
-   </head>
 
-   <script>
-      function showVerticalNav() {
-        var x = document.getElementById("demo");
-        if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
-        } else { 
-          x.className = x.className.replace(" w3-show", "");
-        }
-      }
-   </script>
+      <script type="text/javascript"
+              src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <!--<script type="text/javascript" src="lib/jquery_plantuml.js"></script>-->
+      <script type="text/javascript" src="jquery_plantuml.js"></script>
+      <!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
+
+      <script>
+         MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+                     svg: { fontCache: 'global' } };
+      </script>
+      <script type="text/javascript" id="MathJax-script" async
+              src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+      </script>
+
+      <script>
+         function showVerticalNav() {
+           var x = document.getElementById("demo");
+           if (x.className.indexOf("w3-show") == -1) {
+             x.className += " w3-show";
+           } else { 
+             x.className = x.className.replace(" w3-show", "");
+           }
+         }
+      </script>
+
+   </head>
 
    <body>
       <!--menu-->
       <div class="w3-content">
-         <!--menu horizontal-->
-         <div class="w3-bar w3-white w3-topbar w3-bottombar borda-ocre">
+         <div class="w3-cell-row">
+            <div class="w3-cell w3-cell-middle" style="width:100px">
 
-            <a href="index.html" 
-               class="w3-bar-item w3-button texto-ocre
-                      w3-hover-none 
-                      texto-ocre-hover" style="padding-top:18px;">
-               Início
-            </a>
-            <a href="processo_modelagem.html"
-               class="w3-bar-item w3-button
-                      w3-hover-none
-                      texto-ocre-hover
-                      w3-hide-small">
-               Metodologia<br>de Modelagem
-            </a>
-            <a href="mod_material.html"
-               class="w3-bar-item w3-button
-                      w3-hover-none 
-                      texto-ocre-hover
-                      w3-hide-small">
-               Modelagem dos<br>Meios Materiais
-            </a>
-            <a href="#3"
-               class="w3-bar-item w3-button
-                      w3-hover-none 
-                      texto-ocre-hover
-                      w3-hide-small">
-               Link 3
-            </a>
-            <a class="w3-bar-item w3-button w3-right
-                      w3-hide-large w3-hide-medium"
-               onclick="showVerticalNav()">
-               &#9776;
-            </a>
+               <img src="images/logo_uerj_cor.jpg" style="width:90%" 
+                    class="w3-rounded" alt="Logo UERJ">
 
+            </div>
+            <div class="w3-cell w3-cell-middle">
+
+               <!--menu horizontal-->
+               <div class="w3-bar w3-white w3-topbar w3-bottombar borda-ocre">
+
+                  <a href="index.html" 
+                     class="w3-bar-item w3-button texto-ocre
+                            w3-hover-none 
+                            texto-ocre-hover" style="padding-top:18px;padding-bottom:21px;">
+                     Início
+                  </a>
+                  <a href="processo_modelagem.html"
+                     class="w3-bar-item w3-button
+                            w3-hover-none
+                            texto-ocre-hover
+                            w3-hide-small">
+                     Metodologia<br>de Modelagem
+                  </a>
+                  <a href="mod_material.html"
+                     class="w3-bar-item w3-button
+                            w3-hover-none 
+                            texto-ocre-hover
+                            w3-hide-small">
+                     Modelagem dos<br>Meios Materiais
+                  </a>
+                  <a href="#3"
+                     class="w3-bar-item w3-button
+                            w3-hover-none 
+                            texto-ocre-hover
+                            w3-hide-small">
+                     Link 3
+                  </a>
+                  <a class="w3-bar-item w3-button w3-right
+                            w3-hide-large w3-hide-medium"
+                     onclick="showVerticalNav()" style="padding-top:18px;">
+                     &#9776;
+                  </a>
+
+               </div>
+
+            </div>
          </div>
+
          <!--menu vertical-->
          <div id="demo"
               class="w3-bar-block w3-white w3-hide
