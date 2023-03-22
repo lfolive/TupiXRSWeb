@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Metodologia</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="css/my_styles.css">
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <!--<script type="text/javascript" src="lib/jquery_plantuml.js"></script>-->
+      <script type="text/javascript" src="http://www.plm-interop.net/html/js/jquery/jquery_plantuml.js"></script>
+      <!-- rawdeflate.js is implicity used by jquery_plantuml.js -->
+   </head>
+
+   <script>
+      function showVerticalNav() {
+        var x = document.getElementById("demo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else { 
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+   </script>
+
+   <body>
+      <!--menu-->
+      <div class="w3-content">
+         <!--menu horizontal-->
+         <div class="w3-bar w3-white w3-topbar w3-bottombar borda-ocre">
+
+            <a href="index.html" 
+               class="w3-bar-item w3-button
+                      w3-hover-none 
+                      texto-ocre-hover" style="padding-top:18px;">
+               Início
+            </a>
+            <a href="processo_modelagem.html"
+               class="w3-bar-item w3-button texto-ocre
+                      w3-hover-none
+                      texto-ocre-hover
+                      w3-hide-small">
+               Metodologia<br>de Modelagem
+            </a>
+            <a href="mod_material.html"
+               class="w3-bar-item w3-button
+                      w3-hover-none 
+                      texto-ocre-hover
+                      w3-hide-small">
+               Modelagem dos<br>Meios Materiais
+            </a>
+            <a href="#3"
+               class="w3-bar-item w3-button
+                      w3-hover-none 
+                      texto-ocre-hover
+                      w3-hide-small">
+               Link 3
+            </a>
+            <a class="w3-bar-item w3-button w3-right
+                      w3-hide-large w3-hide-medium"
+               onclick="showVerticalNav()">
+               &#9776;
+            </a>
+
+         </div>
+         <!--menu vertical-->
+         <div id="demo"
+              class="w3-bar-block w3-white w3-hide
+                     w3-hide-large w3-hide-medium">
+
+            <a href="processo_modelagem.html"
+               class="w3-bar-item w3-button texto-ocre
+                      w3-hover-none
+                      texto-ocre-hover">
+               Metodologia de Modelagem
+            </a>
+            <a href="mod_material.html"
+               class="w3-bar-item w3-button
+                      w3-hover-none
+                      texto-ocre-hover">
+               Modelagem dos Meios Materiais
+            </a>
+            <a href="#3"
+               class="w3-bar-item w3-button
+                      w3-hover-none
+                      texto-ocre-hover">
+               Link 3
+            </a>
+
+         </div>
+      </div>
+
+      <!--conteúdo-->
+      <div class="w3-content w3-container">
+
+         <div class="secao">Metodologia de modelagem e simulação</div>
+
+            <div class="subsecao">Processo de modelagem</div>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  Em geral, o processo de modelagem está baseado em etapas que permitem a geração de modelos. O cumprimento destas etapas, em ordem específica sem anular a possibilidade de retorno a etapas anteriores, materializa a metodologia de modelagem em si.</p>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  As etapas são:
+               </p>
+
+                  <ul>
+                     <li> identificação do problema;</li>
+                     <li> especificação dos objetivos da modelagem;</li>
+                     <li> análise das características operacionais dos sistemas e coleta de dados que descrevam o comportamento do sistema (modelagem conceitual);</li>
+                     <li> verificação do modelo;</li>
+                     <li> formulação do modelo do sistema incluindo as variáveis de entrada, saída e de estado e os processos realizados pelo sistema (modelagem formal);</li>
+                     <li> estimação dos valores usados pelos parâmetros internos e externos do modelo;</li>
+                     <li> verificação do modelo;</li>
+                     <li> elaboração das lógicas necessárias para coordenação dos modelos formais a partir dos processo já identificados (modelagem lógica);</li>
+                     <li> verificação do modelo;</li>
+                     <li> desenvolvimento dos programas de computador necessários (modelagem computacional);</li>
+                     <li> verificação do modelo;</li>
+                     <li> especificação das simulações a serem realizadas;</li>
+                     <li> análise dos resultados;</li>
+                     <li> verificação do modelo e validação da simulação.</li>
+                  </ul>
+
+            <div class="subsubsecao">Modelagem conceitual ou descritiva</div>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  No processo de modelagem, as quatro primeiras etapas estão diretamente ligadas a formulação do modelo conceitual. Cabe destacar que o modelo pode se referir tanto ao sistema como um todo assim como de alguma parte, um subsistema, e não envolve nenhuma representação formal (matemática) do sistema ou de parte dele. O objetivo desta modelagem é capturar a essência do sistema, seu funcionamento, sua interação com a vizinhança, seus pré-requisitos e suas limitações. O nível de especificidade do modelo conceitual depende dos objetivos estabelecidos no início do processo de modelagem. Esta etapa deve ser repetida até que o modelo conceitual descreva claramente o sistema visado dentro dos limites estabelecidos nos objetivos.
+               </p>
+
+            <div class="subsubsecao">Modelagem formal ou matemática</div>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  Na etapa de formulação do modelo, o processo avança na direção da representação formal do sistema, isto é, na sua descrição matemática. Esta descrição formal deve ser coerente com a descrição conceitual gerada nas etapas anteriores. Da interação com a vizinhança, a modelagem formal retira as informações sobre entradas e saídas. Do funcionamento e limitações do sistema, a modelagem gera um conjunto de funções que relacionam as entradas com as saídas e que, organizadas de forma lógica, reproduzem o funcionamento do sistema real. E dos pré-requisitos, a modelagem estabelece as variáveis de estado do sistema.
+               </p>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  Neste ponto, o modelo formal pode ser avaliado a partir de valores iniciais previamente estabelecidos de forma a testar a adequação do formalismo na reprodução do comportamento do sistema real. A verificação se dá no confronto entre a observação do sistema em situações específicas (controladas) e o comportamento do modelo nestas mesmas condições através da aplicação de valores às variáveis relacionadas e avaliações numéricas e gráficas. Repete-se a etapa até que o modelo formal traduza corretamente o comportamento do sistema em números.
+               </p>
+
+            <div class="subsubsecao">Modelagem lógica ou processual</div>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  A partir do modelo formal, o projetista parte para a modelagem computacional onde variáveis, funções e lógica se fundirão para gerar os algoritmos correspondentes. São usados aqui métodos matemáticos, estruturação de dados e ferramentas de lógica de programação, entre outras coisas. Nesta etapa, o resultado deve ser um conjunto de documentos contendo a estrutura de funcionamento do modelo e a forma como ele responderá aos eventos externos e internos. A verificação avalia a capacidade de os algoritmos gerarem resultados coerentes com as condições de teste e a validação se dá pela confrontação de resultados obtidos na execução da lógica com dados certificados a partir de entradas previamente escolhidas com resultados previstos.
+               </p>
+
+            <div class="subsubsecao">Modelagem computacional</div>
+
+               <p class="w3-panel w3-leftbar w3-border-gray">
+                  O modelo computacional é a transcodificação do modelo lógico, baseado em algoritmos, para uma linguagem de programação específica.  A verificação do modelo computacional deve ocorrer comparando-se os resultados numéricos da etapa anterior com os resultados gerados em computador quando o modelo computacional é submetido às mesmas condições iniciais. É natural que o processo de modelagem lógica não esgote todas as possibilidades de teste durante sua verificação. E é fato que o computador é capaz de repetir exaustivamente uma sequência de tarefas que para o ser humano é extenuante. Então, a etapa de verificação do modelo computacional pode ser uma oportunidade de se verificar se o modelo lógico é correto e representa bem o modelo conceitual através da modelagem formal.
+            </p>
+
+         <div class="subsecao">Processo de Simulação</div>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               Depois de inúmeras repetições das etapas de modelagem conceitual, formal e computacional, o projetista entra na fase "pre-final" que é a de especificação das simulações. Neste momento, o projetista está voltado para reprodução do sistema real como um todo e em condições não pré-estabelecidas, mas que podem ser obtidas através da observação experimental. Se o sistema real é complexo, todos os subsistemas devem ter sido verificados. A simulação do sistema deve atender, cumprir, os objetivos especificados no início da modelagem. Somente depois de verificados os resultados da simulação é que o processo de modelagem é dito validado.
+            </p>
+
+         <div class="subsubsecao">Concepção da simulação</div>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">Das ideias já apresentadas, a simulação em si corresponde a aplicação de uma metodologia para manipulação de um modelo e visa reproduzir o comportamento de um sistema através de sua modelagem formal que deve gerar saídas em função de entradas (respostas às excitações). Esta reprodução comportamental pode ser realizada baseada no tempo ou na ocorrência de eventos e isto revela algumas modalidades de simulação.
+            </p>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               A simulação pode ser do tipo contínua ou discreta no tempo. O que caracteriza cada uma das duas modalidades é o comportamento do parâmetro observado durante a simulação. Imagine a simulação de um carro que se desloca com velocidade uniforme e, de repente, freia. Se a variável observada for a velocidade, esta irá variar continuamente no tempo até que o carro pare. Imagine agora o sinal de pedestre. Uma função que descreva a troca de estado do sinal é uma função discreta. Logo, simular o sinal será através de uma simulação discreta no tempo e simular o carro parando é uma simulação contínua no tempo. Os modelos matemáticos usados estão escritos como funções algébricas do tempo e se as condições iniciais do fenômeno forem repetidas a cada simulação, se obteria os mesmos resultados.
+            </p>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               Pode-se pensar também nos fenômenos naturais aleatórios. Este tipo de situação não favorece a formulação de uma função no tempo pois não há, a priori, como se estabelecer o memento exato em que ocorrerá o evento. Então, a solução é observar o comportamento do fenômeno e tentar descrevê-lo através de curvas de probabilidade -- não de quando ele ocorre, mas como ele ocorre, em que circunstâncias e o que acontece depois. Esta é a simulação estocástica. Não há uma forma determinística de representá-la, somente estatística. A simulação de reações químicas e nucleares, interação da radiação com a matéria, do comportamento da bolsa de valores, são simulações que dependem de distribuições de probabilidade.
+            </p>
+
+         <div class="subsubsecao">Verificação e validação</div>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               A verificação e a validação do modelo são muito importantes ao longo de todo o processo de modelagem, pois asseguram o atendimento das especificações iniciais e credencia os resultados das simulações baseadas no modelo proposto.
+            </p>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               A verificação tem por objetivo avaliar o modelo quanto as suas especificidades e necessidades, sendo testado contra as suas especificações e requisitos sem os quais o modelo falha. Se o modelo representa um sistema e, por sua vez, o sistema apresenta uma série de pré-requisitos, então o modelo deve apresentar estes mesmos requisitos. Por exemplo, o sistema real gera como resultado um arquivo com um formato específico. Sem se preocupar com a interpretação do conteúdo, o processo de verificação deve analisar se o modelo também gera um arquivo e se o formato deste é compatível com a saída real do sistema. Se o modelo é aprovado nesta verificação, passamos para a etapa de validação.
+            </p>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               O processo de verificação não envolve, necessariamente, simulação, pois as condições operacionais do modelo podem não ser reais, ou seja, aplicam-se condições iniciais (configurações) de teste. O modelo sob verificação também pode estar deslocado de seu ambiente de operação final, ou seja, ele é parte de um conjunto de modelos (um submodelo, análogo a um subsistema) e, portanto, seus resultados não tem significado.
+            </p>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               As realimentações nos processos de modelagem ocorrem nas etapas de verificação do modelo. Caso o modelo não passe na avaliação, o usuário (no papel do analista/projetista) retorna para alguma etapa anterior e recomeça a modelagem. E se o modelo verificado é parte de uma modelagem mais ampla, mesmo que um modelo específico seja considerado verificado e aprovado, o usuário deverá retornar às etapas iniciais para proceder a modelagem das demais partes do sistema. Somente após a verificação de todos os modelos (de cada parte do sistema) é que ele estará habilitado para as etapas seguintes: modelagem computacional e validação.
+            </p>
+
+            <p class="w3-panel w3-leftbar w3-border-gray">
+               Na validação do modelo, preocupa-se com a coerência dos resultados quando confrontados com os resultados reais. Isto só é possível se o modelo foi verificado e aprovado anteriormente, isto é, atende aos requisitos apresentados na concepção do modelo. A coerência entre os resultados envolve a noção de acuidade que depende de valores estabelecidos como referência. A validação está intimamente ligada à qualidade dos resultados gerados pelo modelo, isto é, dos resultados gerados pela simulação do sistema real através do modelo concebido. Se o modelo é dito validado, significa que seus resultados são confiáveis e o sistema real "pode ser" substituído pelo modelo dentro das condições estabelecidas no processo de modelagem como um todo. O resultado da validação é a credibilidade do modelo e o credenciamento da simulação.
+            </p>
+
+         <div class="subsecao">Referências</div>
+            <p>SANCHEZ, P. J. Fundamentals of simulation modeling. In: 2007 Winter Simulation Conference. 2007. p. 54–62.</p>
+            <p>SCHMIDT, J. W. Fundamentals of digital simulation modeling. In: Proceedings of the 12th Conference on Winter Simulation. [S.l.]: IEEE Press, 1980. (WSC ’80), p. 315–323.</p>
+            <p>SOKOLOWSKI, J.; BANKS, C. Principles of Modeling and Simulation: A Multidisciplinary Approach. Hoboken - New Jersey - USA: John Wiley & Sons, 2009. 259 p.</p>
+
+      </div>
+
+      <footer class="fundo-azul w3-text-white">
+         <!--tirar as margens-->
+         <div class="w3-content w3-padding-16">
+               Rodapé
+         </div>
+      </footer>
+   </body>
+</html>
+
