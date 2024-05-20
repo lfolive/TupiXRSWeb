@@ -119,49 +119,48 @@
       <!--banner-->
       <header class="w3-center fundo-azul w3-text-white">
          <!--tirar as margens-->
-         <div class="w3-content w3-padding-16">
+         <div class="w3-content w3-padding-16 secao">
+            Tupi<br>Simulador Monte Carlo em Charm++
          </div>
       </header>
 
 <!--conteúdo-->
 <div class="w3-content w3-container">
 
-<div class="secao w3-border" style="padding-bottom:16px;">
-Projeto de simulador Monte Carlo para aplicações em raio x usando linguagem Charm++: Simulador Tupi
-</div><br>
-
-<div class="w3-border">
 <div class="subsecao">
 Introdução
 </div>
 
-<p class="w3-panel w3-leftbar borda-azul">
+<div class="w3-panel w3-leftbar borda-azul">
 A técnica de Monte Carlo é amplamente utilizada nas implementações computacionais que simulam processos estocásticos. Exemplos na Física não faltam. Simuladores computacionais para aplicações em física das radiações utilizam a técnica de Monte Carlo com muita frequência.
-</p>
-
-<p class="w3-panel w3-leftbar borda-azul">
-Estes simuladores utilizam, em sua maioria, processos como "histórias" de eventos, isto é, simulam a criação de eventos com características controladas por distribuições de probabilidade e acompanham a evolução deste evento. A evolução em si também é função de distribuições de probabilidade. O final das histórias dependem de condições tais como "detecção" ou "perda para o meio" e, ao encerrar uma história, dá-se início a um novo evento (nova história).
-</p>
-
-<p class="w3-panel w3-leftbar borda-azul">
-Como os simuladores são geralmente utilizados, entre outros objetivos, como fonte de dados para planejamento e avaliação de cenários de resultados experimentais, o parâmetro estatística de contagem é sempre um elemento de grande peso, ou seja, o número de eventos (histórias) deve ser suficientemente grande para garantir que os resultados obtidos pela simulação possam ser considerados representativos. Como consequência, o tempo de processamento, o tempo de simulação, normalmente é elevado.
-</p>
-
-<p class="w3-panel w3-leftbar borda-azul">
-Para se reduzir este tempo de simulação, pode-se adotar diferentes estratégias. Neste projeto, o foco está no uso de processamento paralelo e distribuído. 
-</p>
-
-<p class="w3-panel w3-leftbar borda-azul">
-Na física do raio x, como as histórias dos fótons (os eventos) não se interferem, ou seja, são processos independentes, e os estados intermediários das histórias não dependem dos estados anteriores, isto é, são processos markovianos, uma abordagem possível para redução do tempo de simulação é a paralelização/distribuição das histórias dos fótons.
-</p>
-
 </div>
+
+<div class="w3-panel w3-leftbar borda-azul">
+Estes simuladores utilizam, em sua maioria, processos como "histórias" de eventos, isto é, simulam a criação de eventos com características controladas por distribuições de probabilidade e acompanham a evolução deste evento. A evolução em si também é função de distribuições de probabilidade. O final das histórias dependem de condições tais como "detecção" ou "perda para o meio" e, ao encerrar uma história, dá-se início a um novo evento (nova história).
+</div>
+
+<div class="w3-panel w3-leftbar borda-azul">
+Como os simuladores são geralmente utilizados, entre outros objetivos, como fonte de dados para planejamento e avaliação de cenários de resultados experimentais, o parâmetro estatística de contagem é sempre um elemento de grande peso, ou seja, o número de eventos (histórias) deve ser suficientemente grande para garantir que os resultados obtidos pela simulação possam ser considerados representativos. Como consequência, o tempo de processamento, o tempo de simulação, normalmente é elevado.
+</div>
+
+<div class="w3-panel w3-leftbar borda-azul">
+Para se reduzir este tempo de simulação, pode-se adotar diferentes estratégias. Neste projeto, o foco está no uso de processamento paralelo e distribuído. 
+</div>
+
+<div class="w3-panel w3-leftbar borda-azul">
+Na física do raio x, como as histórias dos fótons (os eventos) não se interferem, ou seja, são processos independentes, e os estados intermediários das histórias não dependem dos estados anteriores, isto é, são processos markovianos, uma abordagem possível para redução do tempo de simulação é a paralelização/distribuição das histórias dos fótons.
+</div>
+
+<p class="w3-panel"><br></p>
+<p class="w3-panel"><br></p>
+
 </div>
 
       <!--rodapé-->
       <footer class="w3-bottom fundo-azul w3-text-white">
          <!--tirar as margens-->
          <div class="w3-content w3-padding-16">
+            rodapé
          </div>
       </footer>
    </body>
