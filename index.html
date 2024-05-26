@@ -178,6 +178,10 @@ O speedup $s$ passa a ser expresso como:
 <br><br>
 $s = \dfrac{T(1)[(1-P)+P]}{T(1)\left[(1-P)+\dfrac{P}{n}\right]}=$ $\dfrac{1}{(1-P)+\dfrac{P}{n}}=$ $\dfrac{n}{n-(n-1)P}$.
 <br><br>
+Esta análise é conhecida como <b>argumento de Amdahl</b> ou <b>lei de Amdahl</b>.
+</div>
+
+<div class="w3-panel w3-leftbar borda-azul">
 Para uma execução completamente serial ($P=0$), o speedup é 1 e para uma execução completamente paralelizável ($P=1$), o speedup é igual ao número de processos paralelos ($n$). A figura 1 a seguir exemplifica este comportamento para o caso hipotético de $n=10$. Na figura 2, observa-se, para diferentes taxas de paralelismo, o comportamento do speedup em função do número de processos paralelos.
 </div>
 
@@ -236,4 +240,3 @@ onde $S=T_s/T(1)$ é a fração serial, $M=T_m/T(1)$ é a fração na comunicaç
       </footer>
    </body>
 </html>
-
