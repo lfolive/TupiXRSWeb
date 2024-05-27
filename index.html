@@ -164,8 +164,16 @@ Para se reduzir este tempo de simulação, mantendo-se a estatística de contage
 Na física do raio x, como as histórias dos fótons (os eventos) não se interferem, ou seja, são processos independentes, e os estados intermediários das histórias não dependem dos estados anteriores, isto é, são processos markovianos, uma abordagem possível para redução do tempo de simulação é a paralelização/distribuição das histórias dos fótons.
 </div>
 
+<div class="subsubsecao">
+Amdahl...
+</div>
+
 <div class="w3-panel w3-leftbar borda-azul">
-Em um ambiente de computação com $n$ processadores disponíveis, pode-se executar $n$ histórias simultaneamente. Logo, o tempo de processamento paralelizado tende a $T(n)=T(1)/n$, onde $T(1)$ é o tempo de execução com 1 processador. A otimização é medida como <b>speedup</b> $s$ que é a taxa de "aceleração" do processamento: $s=T(1)/T(n)$. No caso ideal, isto é, com processos trivialmente paralelizáveis (sem execuções seriais), o speedup será $s=n$.
+Em um ambiente de computação com $n$ processadores disponíveis, pode-se executar $n$ histórias simultaneamente. Logo, o tempo de processamento paralelizado tende a $T(n)=T(1)/n$, onde $T(1)$ é o tempo de execução com 1 processador. A otimização é medida como <b>speedup</b> $s$ que é a taxa de "aceleração" do processamento:
+<br><br>
+$s=T(1)/T(n)$.
+<br><br>
+No caso ideal, isto é, com processos trivialmente paralelizáveis (sem execuções seriais), o speedup será $s=n$.
 </div>
 
 <div class="w3-panel w3-leftbar borda-azul">
@@ -178,7 +186,9 @@ Normalizando a expressão:
 $1=\dfrac{T_s+T_m}{T(1)}+\dfrac{T_p}{T(1)}=$ $NP + P$, 
 <br><br>
 onde $NP$ e $P$ são os percentuais de processamento não paralelizável e paralelizável respectivamente. Por uma questão de simplicificação, expressa-se o percentual não paralelizável como $NP=1-P$.
-<br><br>
+</div>
+
+<div class="w3-panel w3-leftbar borda-azul">
 Assim, pode-se expressar o tempo $T(1)$ como:
 <br><br>
 $T(1) = T(1)[(1-P)+P]$
@@ -191,11 +201,15 @@ O speedup $s$ passa a ser expresso como:
 <br><br>
 $s = \dfrac{T(1)[(1-P)+P]}{T(1)\left[(1-P)+\dfrac{P}{n}\right]}=$ $\dfrac{1}{(1-P)+\dfrac{P}{n}}=$ $\dfrac{n}{n-(n-1)P}$.
 <br><br>
-Esta análise é conhecida como <b>argumento de Amdahl</b> ou <b>lei de Amdahl</b>.
+Esta análise é conhecida como <b>argumento de Amdahl</b> ou <b>lei de Amdahl</b> (AL-HAYANNI, 2020).
 </div>
 
 <div class="w3-panel w3-leftbar borda-azul">
-Para uma execução completamente serial $(P=0)$, o speedup é 1 e para uma execução completamente paralelizável $(P=1)$, o speedup é igual ao número de processos paralelos ($n$). A figura 1 a seguir exemplifica este comportamento para o caso hipotético de $n=10$. Na figura 2, observa-se, para diferentes taxas de paralelismo, o comportamento do speedup em função do número de processos paralelos.
+Para uma execução completamente serial $(P=0),$ o speedup é 1 e para uma execução completamente paralelizável $(P=1),$ o speedup é igual ao número de processos paralelos ($n$). Para valores intermediários de $P$, percebe-se que o speedup tende para a razão $1/(1-P)$ conforme $n$ aumenta. Este valor é ditado pela porção não paralelizável do processo.
+</div>
+
+<div class="w3-panel w3-leftbar borda-azul">
+A figura 1 a seguir exemplifica o comportamento para o caso hipotético de $n=10$. Na figura 2, observa-se, para diferentes taxas de paralelismo, o comportamento do speedup em função do número de processos paralelos.
 </div>
 
 <div class="w3-row-padding">
@@ -228,15 +242,40 @@ onde $S=T_s/T(1)$ é a fração serial, $M=T_m/T(1)$ é a fração na comunicaç
 <div class="subsecao">Referências</div>
    <div class="w3-panel w3-leftbar borda-azul">
       <p>
-        Kale, L. V.; Zheng, G. 
-        <i>The Charm++ Programming Model</i>.
-        In: Parallel Science and Engineering Applications: The Charm++ Approach,
-        Kale, Laxmikant V. and Bhatele, Abhinav (Org.), 
-        ch. 1, 
-        p. 1-16. 
-        Boca Raton, FL, USA: CRC Press, Inc., 2013. 
-        <a href="https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf">https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf</a>
+         Kale, L. V., Zheng, G. 
+         <i>The Charm++ Programming Model</i>.
+         In: Parallel Science and Engineering Applications: The Charm++ Approach,
+         Kale, Laxmikant V. and Bhatele, Abhinav (Org.), 
+         ch. 1, 
+         p. 1-16. 
+         Boca Raton, FL, USA: CRC Press, Inc., 2013. 
+         <a href="https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf">
+            https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf
+         </a>
       </p>
+
+      <p>
+         Al-hayanni, M.A.N., Xia, F., Rafiev, A., 
+         Romanovsky, A., Shafik, R. and Yakovlev, A.
+         <i>Amdahl's law in the context of heterogeneous many-core systems: a survey</i>. 
+         IET Comput. Digit. Tech., v.14, n.4, p.133-148. 2020.
+         <a href="https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220">
+            https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220
+         </a>
+      </p>
+
+      <p>
+         Wikipedia. 
+         <i>Amdahl's law</i>. 
+         <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">
+            https://en.wikipedia.org/wiki/Amdahl%27s_law</a> 
+         Accessed at 2024.05.26.
+      </p>
+
+      <a href="https://www.sciencedirect.com/topics/computer-science/amdahls-law">
+         https://www.sciencedirect.com/topics/computer-science/amdahls-law
+      </a>
+
    </div>
 </div>
 
