@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
    <head>
       <meta charset="UTF-8">
       <title>Simulador Tupi</title>
@@ -19,6 +19,9 @@
             href="https://fonts.googleapis.com/css?family=Source+Serif+4"-->
 
       <link rel="stylesheet" href="css/my_styles.css">
+      <style>
+         .sticky { position: -webkit-sticky; position: sticky; top: 0; }
+      </style>
 
       <script type="text/javascript"
               src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -130,164 +133,241 @@
       </div>
 
       <!--banner-->
-      <header class="fundo-azul w3-text-white">
+      <header class="fundo-azul w3-text-white sticky">
          <!--tirar as margens-->
          <div class="w3-content w3-container w3-padding-16 secao">
             Tupi: Simulador Monte Carlo em Charm++
          </div>
       </header>
 
-<!--conteúdo-->
-<div class="w3-content w3-container">
+      <!--conteúdo-->
+      <div class="w3-content w3-container">
 
-<div class="subsecao">
-Introdução
-</div>
+         <div class="subsecao">
+            Introdução
+         </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-A técnica de Monte Carlo é amplamente utilizada nas implementações computacionais que simulam processos estocásticos. Exemplos na Física não faltam. Simuladores computacionais para aplicações em física das radiações utilizam a técnica de Monte Carlo com muita frequência.
-</div>
+            <div class="w3-panel w3-leftbar borda-azul">
+               A técnica de Monte Carlo é amplamente utilizada nas implementações 
+               computacionais que simulam processos estocásticos. Exemplos na 
+               Física não faltam. Simuladores computacionais para aplicações em 
+               física das radiações utilizam a técnica de Monte Carlo com muita 
+               frequência.
+            </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Estes simuladores utilizam, em sua maioria, processos como "histórias" de eventos, isto é, simulam a criação de eventos com características controladas por distribuições de probabilidade e acompanham a evolução deste evento. A evolução em si também é função de distribuições de probabilidade. O final de cada história depende de condições tais como absorsão, detecção ou perda para o meio e, ao encerrar uma história, dá-se início a um novo evento (nova história).
-</div>
+            <div class="w3-panel w3-leftbar borda-azul">
+               Estes simuladores utilizam, em sua maioria, processos como 
+               "histórias" de eventos, isto é, simulam a criação de eventos com 
+               características controladas por distribuições de probabilidade e 
+               acompanham a evolução deste evento. A evolução em si também é função 
+               de distribuições de probabilidade. O final de cada história depende 
+               de condições tais como absorsão, detecção ou perda para o meio e, 
+               ao encerrar uma história, dá-se início a um novo evento (nova 
+               história).
+            </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Como os simuladores são geralmente utilizados, entre outros objetivos, como fonte de dados para planejamento e avaliação de cenários de resultados experimentais, o parâmetro <b>estatística de contagem</b> é sempre um elemento de grande peso, ou seja, o número de eventos (histórias) deve ser suficientemente grande para garantir que os resultados obtidos pela simulação possam ser considerados estatisticamente representativos. Como consequência, o tempo de processamento, o tempo de simulação, normalmente é elevado.
-</div>
+            <div class="w3-panel w3-leftbar borda-azul">
+               Como os simuladores são geralmente utilizados, entre outros 
+               objetivos, como fonte de dados para planejamento e avaliação de 
+               cenários de resultados experimentais, o parâmetro <b>estatística 
+               de contagem</b> é sempre um elemento de grande peso, ou seja, o 
+               número de eventos (histórias) deve ser suficientemente grande para 
+               garantir que os resultados obtidos pela simulação possam ser 
+               considerados estatisticamente representativos. Como consequência, o 
+               tempo de processamento, o tempo de simulação, normalmente é elevado.
+            </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Para se reduzir este tempo de simulação, mantendo-se a estatística de contagem, pode-se adotar diferentes estratégias. Neste projeto, o foco está no uso de processamento paralelo e distribuído pela implementação de um simulador desenvolvido em linguagem de programação paralela/distribuída: <b>Charm++</b> (KALE; ZHENG, 2013). 
-</div>
+            <div class="w3-panel w3-leftbar borda-azul">
+               Para se reduzir este tempo de simulação, mantendo-se a estatística 
+               de contagem, pode-se adotar diferentes estratégias. Neste projeto, 
+               o foco está no uso de processamento paralelo e distribuído pela 
+               implementação de um simulador desenvolvido em linguagem de 
+               programação paralela/distribuída: <b>Charm++</b> (KALE; 
+               ZHENG, 2013). 
+            </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Na física do raio x, como as histórias dos fótons (os eventos) não se interferem, ou seja, são processos independentes, e os estados intermediários das histórias não dependem dos estados anteriores, isto é, são processos markovianos, uma abordagem possível para redução do tempo de simulação é a paralelização/distribuição das histórias dos fótons.
-</div>
+            <div class="w3-panel w3-leftbar borda-azul">
+               Na física do raio x, como as histórias dos fótons (os eventos) 
+               não se interferem, ou seja, são processos independentes, e os 
+               estados intermediários das histórias não dependem dos estados 
+               anteriores, isto é, são processos markovianos, uma abordagem 
+               possível para redução do tempo de simulação é a 
+               paralelização/distribuição das histórias dos fótons.
+            </div>
 
-<div class="subsubsecao">
-Amdahl...
-</div>
+            <div class="subsubsecao">
+               Amdahl...
+            </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Em um ambiente de computação com $n$ processadores disponíveis, pode-se executar $n$ histórias simultaneamente. Logo, o tempo de processamento paralelizado tende a $T(n)=T(1)/n$, onde $T(1)$ é o tempo de execução com 1 processador. A otimização é medida como <b>speedup</b> $s$ que é a taxa de "aceleração" do processamento:
-<br><br>
-$s=T(1)/T(n)$.
-<br><br>
-No caso ideal, isto é, com processos trivialmente paralelizáveis (sem execuções seriais), o speedup será $s=n$.
-</div>
+               <div class="w3-panel w3-leftbar borda-azul">
+                  Em um ambiente de computação com $n$ processadores disponíveis, 
+                  pode-se executar $n$ histórias simultaneamente. Logo, o tempo 
+                  de processamento paralelizado tende a $T(n)=T(1)/n$, onde $T(1)$ 
+                  é o tempo de execução com 1 processador. A otimização é medida 
+                  como <b>speedup</b> $s$ que é a taxa de "aceleração" do 
+                  processamento:
 
-<div class="w3-panel w3-leftbar borda-azul">
-No dia a dia, o tempo de processamento é a soma dos tempos de processamento serial $T_s$ mais os de processamento paralelizável $T_p$ mais os de troca de mensagens $T_m$:
-<br><br>
-$T(1)=T_s+T_p+T_m$. 
-<br><br>
-Normalizando a expressão: 
-<br><br>
-$1=\dfrac{T_s+T_m}{T(1)}+\dfrac{T_p}{T(1)}=$ $NP + P$, 
-<br><br>
-onde $NP$ e $P$ são os percentuais de processamento não paralelizável e paralelizável respectivamente. Por uma questão de simplicificação, expressa-se o percentual não paralelizável como $NP=1-P$.
-</div>
+                  <div class="w3-panel w3-leftbar">
+                     $s=T(1)/T(n)$.
+                  </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Assim, pode-se expressar o tempo $T(1)$ como:
-<br><br>
-$T(1) = T(1)[(1-P)+P]$
-<br><br>
-e o tempo $T(n)$ como:
-<br><br>
-$T(n) = T(1)\left[(1-P)+\dfrac{P}{n}\right]$.
-<br><br>
-O speedup $s$ passa a ser expresso como: 
-<br><br>
-$s = \dfrac{T(1)[(1-P)+P]}{T(1)\left[(1-P)+\dfrac{P}{n}\right]}=$ $\dfrac{1}{(1-P)+\dfrac{P}{n}}=$ $\dfrac{n}{n-(n-1)P}$.
-<br><br>
-Esta análise é conhecida como <b>argumento de Amdahl</b> ou <b>lei de Amdahl</b> (AL-HAYANNI, 2020).
-</div>
+                  No caso ideal, isto é, com processos trivialmente paralelizáveis 
+                  (sem execuções seriais), o speedup será $s=n$.
+               </div>
 
-<div class="w3-panel w3-leftbar borda-azul">
-Para uma execução completamente serial $(P=0),$ o speedup é 1 e para uma execução completamente paralelizável $(P=1),$ o speedup é igual ao número de processos paralelos ($n$). Para valores intermediários de $P$, percebe-se que o speedup tende para a razão $1/(1-P)$ conforme $n$ aumenta. Este valor é ditado pela porção não paralelizável do processo.
-</div>
+               <div class="w3-panel w3-leftbar borda-azul">
+                  No dia a dia, o tempo de processamento é a soma dos tempos 
+                  de processamento serial $T_s$ mais os de processamento 
+                  paralelizável $T_p$ mais os de troca de mensagens $T_m$:
 
-<div class="w3-panel w3-leftbar borda-azul">
-A figura 1 a seguir exemplifica o comportamento para o caso hipotético de $n=10$. Na figura 2, observa-se, para diferentes taxas de paralelismo, o comportamento do speedup em função do número de processos paralelos.
-</div>
+                  <div class="w3-panel w3-leftbar">
+                     $T(1)=T_s+T_p+T_m$. 
+                  </div>
 
-<div class="w3-row-padding">
-   <div class="w3-col m6 w3-card w3-margin w3-center" style="width:45%">
-      <img src="images/speedup.png" style="width:100%">
-      <div class="w3-container">
-         <p>Figura 1. </p>
+                  Normalizando a expressão: 
+
+                  <div class="w3-panel w3-leftbar">
+                     $1=\dfrac{T_s+T_m}{T(1)}+\dfrac{T_p}{T(1)}=$ $NP + P$, 
+                  </div>
+
+                  onde $NP$ e $P$ são os percentuais de processamento não 
+                  paralelizável e paralelizável respectivamente. Por uma 
+                  questão de simplicificação, expressa-se o percentual não 
+                  paralelizável como $NP=1-P$.
+               </div>
+
+               <div class="w3-panel w3-leftbar borda-azul">
+                  Assim, pode-se expressar o tempo $T(1)$ como:
+
+                  <div class="w3-panel w3-leftbar">
+                     $T(1) = T(1)[(1-P)+P]$
+                  </div>
+
+                  e o tempo $T(n)$ como:
+
+                  <div class="w3-panel w3-leftbar">
+                     $T(n) = T(1)\left[(1-P)+\dfrac{P}{n}\right]$.
+                  </div>
+
+                  O speedup $s$ passa a ser expresso como: 
+
+                  <div class="w3-panel w3-leftbar">
+                     $s = \dfrac{T(1)[(1-P)+P]}{T(1)\left[(1-P)+\dfrac{P}{n}\right]}=$ 
+                     $\dfrac{1}{(1-P)+\dfrac{P}{n}}=$ $\dfrac{n}{n-(n-1)P}$.
+                  </div>
+
+                  Esta análise é conhecida como <b>argumento de Amdahl</b> ou 
+                  <b>lei de Amdahl</b> (AL-HAYANNI, 2020).
+               </div>
+
+               <div class="w3-panel w3-leftbar borda-azul">
+                  Para uma execução completamente serial $(P=0),$ o speedup é 1 e 
+                  para uma execução completamente paralelizável $(P=1),$ o speedup 
+                  é igual ao número de processos paralelos ($n$). Para valores 
+                  intermediários de $P$, percebe-se que o speedup tende para a 
+                  razão $1/(1-P)$ conforme $n$ aumenta. Este valor é ditado pela 
+                  porção não paralelizável do processo.
+               </div>
+
+               <div class="w3-panel w3-leftbar borda-azul">
+                  A figura 1 a seguir exemplifica o comportamento para o caso 
+                  hipotético de $n=10$. Na figura 2, observa-se, para diferentes 
+                  taxas de paralelismo, o comportamento do speedup em função do 
+                  número de processos paralelos.
+               </div>
+
+               <div class="w3-row-padding">
+                  <div class="w3-col m6 w3-card w3-margin w3-center" style="width:45%">
+                     <img src="images/speedup.png" style="width:100%">
+                     <div class="w3-container">
+                        <p>Figura 1. </p>
+                     </div>
+                  </div>
+                  <div class="w3-col m6 w3-card w3-margin w3-center" style="width:45%">
+                     <img src="images/speedup2.png" style="width:100%">
+                     <div class="w3-container">
+                        <p>Figura 2. </p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="w3-panel w3-leftbar borda-azul">
+                  Se $n$ processos paralelos trocam mensagens entre si, tem-se 
+                  que cada processador consome $(n-1)T_m$ para encaminhar suas 
+                  mensagens. Por simplicidade, assume-se que o tempo é da ordem 
+                  de $nT_m$. Assim, a expressão do speedup será:
+
+                  <div class="w3-panel w3-leftbar">
+                     $s=\dfrac{T(1)}{T(n)} = \dfrac{S+M+P}{S+nM+\dfrac{P}{n}}$,
+               </div>
+
+                  onde $S=T_s/T(1)$ é a fração serial, $M=T_m/T(1)$ é a fração 
+                  na comunicação de uma mensagem e $P=T_p/T(1)$ é a fração 
+                  paralelizável.
+               </div>
+
+               <div class="w3-panel w3-leftbar borda-azul">
+                  É perceptível que, com o aumento do número de processos 
+                  paralelos, o tempo para as trocas de mensagens aumenta 
+                  proporcionalmente. Para uma arquitetura de comunicação de 
+                  baixa performance, o tempo consumido na comunicação pode 
+                  tornar-se proibitivo e comprometer o ganho de processamento 
+                  com o aumento de processos paralelos, ou seja, a performance 
+                  deterioriza-se.
+               </div>
+
+         <div class="subsecao">
+            Referências
+         </div>
+
+            <div class="w3-panel w3-leftbar borda-azul">
+               Kale, L. V., Zheng, G. 
+               <i>The Charm++ Programming Model</i>.
+               In: Parallel Science and Engineering Applications: The Charm++ Approach,
+               Kale, Laxmikant V. and Bhatele, Abhinav (Org.), 
+               ch. 1, 
+               p. 1-16. 
+               Boca Raton, FL, USA: CRC Press, Inc., 2013. 
+               <a href="https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf">
+                  https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf
+               </a>
+            </div>
+
+            <div class="w3-panel w3-leftbar borda-azul">
+               Al-hayanni, M.A.N., Xia, F., Rafiev, A., 
+               Romanovsky, A., Shafik, R. and Yakovlev, A.
+               <i>Amdahl's law in the context of heterogeneous many-core systems: a survey</i>. 
+               IET Comput. Digit. Tech., v.14, n.4, p.133-148. 2020.
+               <a href="https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220">
+                  https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220
+               </a>
+            </div>
+
+            <div class="w3-panel w3-leftbar borda-azul">
+               Wikipedia. 
+               <i>Amdahl's law</i>. 
+               <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">
+                  https://en.wikipedia.org/wiki/Amdahl%27s_law</a> 
+               Accessed at 2024.05.26.
+            </div>
+
+            <div class="w3-panel w3-leftbar borda-azul">
+               <a href="https://www.sciencedirect.com/topics/computer-science/amdahls-law">
+                  https://www.sciencedirect.com/topics/computer-science/amdahls-law
+               </a>
+            </div>
+         <!--referências-->
+
       </div>
-   </div>
-   <div class="w3-col m6 w3-card w3-margin w3-center" style="width:45%">
-      <img src="images/speedup2.png" style="width:100%">
-      <div class="w3-container">
-         <p>Figura 2. </p>
-      </div>
-   </div>
-</div>
-
-<div class="w3-panel w3-leftbar borda-azul">
-Se $n$ processos paralelos trocam mensagens entre si, tem-se que cada processador consome $(n-1)T_m$ para encaminhar suas mensagens. Por simplicidade, assume-se que o tempo é da ordem de $nT_m$. Assim, a expressão do speedup será:
-<br><br>
-$s=\dfrac{T(1)}{T(n)} = \dfrac{S+M+P}{S+nM+\dfrac{P}{n}}$,
-<br><br>
-onde $S=T_s/T(1)$ é a fração serial, $M=T_m/T(1)$ é a fração na comunicação de uma mensagem e $P=T_p/T(1)$ é a fração paralelizável.
-</div>
-
-<div class="w3-panel w3-leftbar borda-azul">
-É perceptível que, com o aumento do número de processos paralelos, o tempo para as trocas de mensagens aumenta proporcionalmente. Para uma arquitetura de comunicação de baixa performance, o tempo consumido na comunicação pode tornar-se proibitivo e comprometer o ganho de processamento com o aumento de processos paralelos, ou seja, a performance deterioriza-se.
-</div>
-
-<div class="subsecao">Referências</div>
-   <div class="w3-panel w3-leftbar borda-azul">
-      <p>
-         Kale, L. V., Zheng, G. 
-         <i>The Charm++ Programming Model</i>.
-         In: Parallel Science and Engineering Applications: The Charm++ Approach,
-         Kale, Laxmikant V. and Bhatele, Abhinav (Org.), 
-         ch. 1, 
-         p. 1-16. 
-         Boca Raton, FL, USA: CRC Press, Inc., 2013. 
-         <a href="https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf">
-            https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf
-         </a>
-      </p>
-
-      <p>
-         Al-hayanni, M.A.N., Xia, F., Rafiev, A., 
-         Romanovsky, A., Shafik, R. and Yakovlev, A.
-         <i>Amdahl's law in the context of heterogeneous many-core systems: a survey</i>. 
-         IET Comput. Digit. Tech., v.14, n.4, p.133-148. 2020.
-         <a href="https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220">
-            https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220
-         </a>
-      </p>
-
-      <p>
-         Wikipedia. 
-         <i>Amdahl's law</i>. 
-         <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">
-            https://en.wikipedia.org/wiki/Amdahl%27s_law</a> 
-         Accessed at 2024.05.26.
-      </p>
-
-      <a href="https://www.sciencedirect.com/topics/computer-science/amdahls-law">
-         https://www.sciencedirect.com/topics/computer-science/amdahls-law
-      </a>
-
-   </div>
-</div>
-
-<div class="w3-panel"><br></div>
-
-</div>
+      <!--conteúdo-->
 
       <!--rodapé-->
-      <footer class="w3-bottom fundo-azul w3-text-white">
+      <footer class="fundo-azul w3-text-white">
          <!--tirar as margens-->
-         <div class="w3-content w3-padding-16">
-            rodapé
+         <div class="w3-content w3-container w3-padding-16">
+            Departamento de Física Aplicada e Termodinâmica<br>
+            Instituto de Física Armando Dias Tavares<br>
+            Universidade do Estado do Rio de Janeiro
          </div>
       </footer>
    </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
    <head>
       <meta charset="UTF-8">
       <title>Modelagem dos meios</title>
@@ -19,6 +19,9 @@
             href="https://fonts.googleapis.com/css?family=Source+Serif+4"-->
 
       <link rel="stylesheet" href="css/my_styles.css">
+      <style>
+         .sticky { position: -webkit-sticky; position: sticky; top: 0; }
+      </style>
 
       <script type="text/javascript"
               src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -130,7 +133,7 @@
       </div>
 
       <!--banner-->
-      <header class="fundo-azul w3-text-white">
+      <header class="fundo-azul w3-text-white sticky">
          <!--tirar as margens-->
          <div class="w3-content w3-container w3-padding-16 secao">
             Modelagem dos Meios Materiais
@@ -140,74 +143,186 @@
       <!--conteúdo-->
       <div class="w3-content w3-container">
 
-            <div class="subsecao">Modelagem conceitual</div>
+         <img uml="
+            Bob->Alice : foo
+            Bob<--Alice : foo
+         ">
 
-               <div class="subsubsecao">Seção de choque</div>
+         <div>
+            When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+            \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+            \begin{align}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\end{align}
+         </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   As informações fundamentais para se modelar os meios materiais provêm, em grande parte, de resultados experimentais coletados pela comunidade científica ou têm origem em modelos matemáticos que descrevem os fenômenos em si. Consultar os trabalhos de Hubbell et al. (1975), Thinh e Leroux (1979), Saloman, Hubbell e Scofield (1988), De Boer (1989), Elam, Ravel e Sieber (2002) e Ebel et al. (2003) entre outros.
-                  </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   O principal parâmetro a ser calculado no processo da simulação da interação da radiação com o meio é o coeficiente de atenuação. Cada mecanismo de interação é quantificado através de suas seções de choque que, somados, constituem o valor do coeficiente de atenuação. A partir deles, calcula-se as probabilidades de ocorrência dos mecanismos de interação.
-                  </div>
+         <div class="subsecao">
+            Modelagem conceitual
+         </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   E para se calcular as seções de choque dos mecanismos de interação, utiliza-se bancos de dados ou, como citado anteriormente, formulações matemáticas.
-                  </div>
+            <div class="subsubsecao">
+               Seção de choque
+            </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   Neste projeto, as seções de choque são computadas a partir polinômios interpoladores, conforme proposto no trabalho de Ebel et al. (2003), cujos coeficientes estão em arquivos que compõem o banco de dados. Cada elemento químico (desde o hidrogênio até o plutônio) corresponde a um arquivo texto que disponibiliza os coeficientes para se calcular as seções de choque de absorção fotoelétrica, espalhamento elástico e inelástico.
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  As informações fundamentais para se modelar os meios materiais 
+                  provêm, em grande parte, de resultados experimentais coletados 
+                  pela comunidade científica ou têm origem em modelos matemáticos 
+                  que descrevem os fenômenos em si. Consultar os trabalhos de Hubbell 
+                  et al. (1975), Thinh e Leroux (1979), Saloman, Hubbell e Scofield 
+                  (1988), De Boer (1989), Elam, Ravel e Sieber (2002) e Ebel et al. 
+                  (2003) entre outros.
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   As seções de choque para absorção fotoelétrica dependem da distribuição eletrônica no átomo que está organizada em função das energias de ligação (subníveis de energia). Cada subnível de energia possui o seu conjunto próprio de coeficientes retirados do arquivo de dados e, dependendo da energia da radiação incidente, calcula-se a seção de choque para a absorção ou não.
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  O principal parâmetro a ser calculado no processo da simulação 
+                  da interação da radiação com o meio é o coeficiente de atenuação. 
+                  Cada mecanismo de interação é quantificado através de suas seções 
+                  de choque que, somados, constituem o valor do coeficiente de 
+                  atenuação. A partir deles, calcula-se as probabilidades de 
+                  ocorrência dos mecanismos de interação.
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   A seção de choque para a absorção fotoelétrica total é a soma de todas as seções de choque para absorção calculadas em função da energia da radiação (energia da radiação maior ou igual à energia de ligação do elétron orbital). 
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  E para se calcular as seções de choque dos mecanismos de interação, 
+                  utiliza-se bancos de dados ou, como citado anteriormente, formulações 
+                  matemáticas.
+               </div>
 
-   Já as seções de choque para os espalhamentos elástico e inelástico se referem ao átomo como um todo possuem, cada qual, os seus próprios coeficientes. 
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Neste projeto, as seções de choque são computadas a partir 
+                  polinômios interpoladores, conforme proposto no trabalho de Ebel 
+                  et al. (2003), cujos coeficientes estão em arquivos que compõem o 
+                  banco de dados. Cada elemento químico (desde o hidrogênio até o 
+                  plutônio) corresponde a um arquivo texto que disponibiliza os 
+                  coeficientes para se calcular as seções de choque de absorção 
+                  fotoelétrica, espalhamento elástico e inelástico.
+               </div>
 
-   Uma vez calculadas as seções de choque para cada mecanismo de interação em função da energia da radiação incidente e da natureza do elemento químico, calcula-se o coeficiente de atenuação do elemento.
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  As seções de choque para absorção fotoelétrica dependem da 
+                  distribuição eletrônica no átomo que está organizada em função 
+                  das energias de ligação (subníveis de energia). Cada subnível 
+                  de energia possui o seu conjunto próprio de coeficientes retirados 
+                  do arquivo de dados e, dependendo da energia da radiação incidente, 
+                  calcula-se a seção de choque para a absorção ou não.
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   Se o meio material é uma substância composta, formada por diferentes espécies químicas, as seções de choque podem ser combinadas por mecanismo de interação usando as frações de massa de cada espécime como fator de ponderação (peso), ou seja, as seções de choque por mecanismo de interação em substâncias compostas são médias ponderadas das seções de choque de cada elemento químico do composto.
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  A seção de choque para a absorção fotoelétrica total é a soma de 
+                  todas as seções de choque para absorção calculadas em função da 
+                  energia da radiação (energia da radiação maior ou igual à energia 
+                  de ligação do elétron orbital). 
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   O coeficiente de atenuação do composto pode ser a média ponderada de cada coeficiente de atenuação elementar usando as frações de massa como peso ou a soma das seções de choque do composto por mecanismo de interação conforme mencionado no parágrafo anterior (seções de choque ponderadas pelas frações de massa).
-                   </div>
+                  Já as seções de choque para os espalhamentos elástico e inelástico 
+                  se referem ao átomo como um todo possuem, cada qual, os seus 
+                  próprios coeficientes. 
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   Com o coeficiente de atenuação do composto, calcula-se a probabilidade de transmissão no meio e, consequentemente, a probabilidade de ocorrer um dos mecanismos de interação dado que as probabilidades de cada mecanismo, do ponto de vista do composto, são os produtos das razões entre as seções de choque ponderadas do mecanismo alvo e o coeficiente de atenuação do composto pela probabilidade de interação.
-                   </div>
+                  Uma vez calculadas as seções de choque para cada mecanismo de 
+                  interação em função da energia da radiação incidente e da natureza 
+                  do elemento químico, calcula-se o coeficiente de atenuação do 
+                  elemento.
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   Assim, tem-se uma distribuição de probabilidade discreta que pode ser utilizada para se aplicar o método de Monte Carlo, sortear-se um dos mecanismos de interação ou a transmissão (não interação) e, uma vez selecionado um dos mecanismos de interação, usar as seções de choque de cada elemento do mecanismo sorteado ponderadas pelas respectivas frações de massa para se aplicar novamente o método de Monte Carlo para, desta vez, sortear o elemento químico alvo dentro do composto.
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Se o meio material é uma substância composta, formada por 
+                  diferentes espécies químicas, as seções de choque podem ser 
+                  combinadas por mecanismo de interação usando as frações de massa 
+                  de cada espécime como fator de ponderação (peso), ou seja, as 
+                  seções de choque por mecanismo de interação em substâncias 
+                  compostas são médias ponderadas das seções de choque de cada 
+                  elemento químico do composto.
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   Se o mecanismo sorteado é o espalhamento elástico, a única informação referente à radiação incidente que será atualizada é a direção de propagação e isto é realizado utilizando a seção de choque diferencial de Thompson. Se o fator de forma atômico (atomic form factor) estiver disponível através de algum outro banco de dados, por exemplo, Hubbell et al. (1975), a seção de choque diferencial para o espalhamento elástico assume o modelo seção de choque diferencial de Thompson multiplicado pelo fator de forma atômico.
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  O coeficiente de atenuação do composto pode ser a média 
+                  ponderada de cada coeficiente de atenuação elementar usando as 
+                  frações de massa como peso ou a soma das seções de choque do 
+                  composto por mecanismo de interação conforme mencionado no 
+                  parágrafo anterior (seções de choque ponderadas pelas frações 
+                  de massa).
+                </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   No caso do espalhamento inelástico, tanto a energia como a direção de propagação devem ser atualizadas. Para isso, utiliza-se a seção de choque diferencial expressa pela equação de Klein-Nishina que descreve a distribuição angular de espalhamento. Como o ângulo de espanhamento e a energia do fóton espalhado estão vinculados, uma vez sorteado o ângulo, a energia fica automaticamente determinada. Novamente, se estiverem disponíveis, através de algum banco de dados, as funções de espalhamento incoerentes (incoherent scattering function), a seção de choque diferencial é ajustada pelo produto da seção de choque diferencial de Klein-Nishina pelo fator de espalhamento atômico. Ver o mesmo trabalho de Hubbell et al. (1975).
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Com o coeficiente de atenuação do composto, calcula-se a 
+                  probabilidade de transmissão no meio e, consequentemente, a 
+                  probabilidade de ocorrer um dos mecanismos de interação dado 
+                  que as probabilidades de cada mecanismo, do ponto de vista do 
+                  composto, são os produtos das razões entre as seções de choque 
+                  ponderadas do mecanismo alvo e o coeficiente de atenuação do 
+                  composto pela probabilidade de interação.
+                </div>
 
-               <div class="subsubsecao">Eficiência de produção de fluorescência</div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Assim, tem-se uma distribuição de probabilidade discreta que 
+                  pode ser utilizada para se aplicar o método de Monte Carlo, 
+                  sortear-se um dos mecanismos de interação ou a transmissão 
+                  (não interação) e, uma vez selecionado um dos mecanismos de 
+                  interação, usar as seções de choque de cada elemento do 
+                  mecanismo sorteado ponderadas pelas respectivas frações de massa 
+                  para se aplicar novamente o método de Monte Carlo para, desta 
+                  vez, sortear o elemento químico alvo dentro do composto.
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-Outro parâmetro importante a ser incorporado na modelagem do meio é a eficiência de produção de fluorescência, representada pela letra grega &omega;, que indica a probabilidade de emitir-se um elétron Auger ou um fóton de raios X característicos após a produção de uma vacância na eletrosfera como consequência da absorção fotoelétrica.
-Os trabalhos de Krause (1979), De Boer (1989) e Hubbell et al. (1994), entre outros, apresentam modelagens matemáticas para determinação das eficiências de produção de fluorescência para os principas subníveis de energia (normalmente K, L<sub>1-3</sub> e M).
-                  </div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Se o mecanismo sorteado é o espalhamento elástico, a única 
+                  informação referente à radiação incidente que será atualizada 
+                  é a direção de propagação e isto é realizado utilizando a seção 
+                  de choque diferencial de Thompson. Se o fator de forma atômico 
+                  (atomic form factor) estiver disponível através de algum outro 
+                  banco de dados, por exemplo, Hubbell et al. (1975), a seção de 
+                  choque diferencial para o espalhamento elástico assume o modelo 
+                  seção de choque diferencial de Thompson multiplicado pelo fator 
+                  de forma atômico.
+               </div>
 
-               <div class="subsubsecao">Intensidade dos raios X característicos</div>
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  No caso do espalhamento inelástico, tanto a energia como a 
+                  direção de propagação devem ser atualizadas. Para isso, 
+                  utiliza-se a seção de choque diferencial expressa pela equação de 
+                  Klein-Nishina que descreve a distribuição angular de espalhamento. 
+                  Como o ângulo de espanhamento e a energia do fóton espalhado estão 
+                  vinculados, uma vez sorteado o ângulo, a energia fica 
+                  automaticamente determinada. Novamente, se estiverem disponíveis, 
+                  através de algum banco de dados, as funções de espalhamento 
+                  incoerentes (incoherent scattering function), a seção de choque 
+                  diferencial é ajustada pelo produto da seção de choque diferencial 
+                  de Klein-Nishina pelo fator de espalhamento atômico. Ver o mesmo 
+                  trabalho de Hubbell et al. (1975).
+               </div>
 
-                  <div class="w3-panel w3-container w3-leftbar borda-ocre">
-   Aleḿ das seções de choque e das eficiências de produção de fluorescência, outra informação importante é a intensidade de cada raio x característico que pode ser produzido a partir de uma vacância na eletrosfera. Se forem considerados os raios X característicos que podem ser emitidos a partir da ionização do subnível de energia K, tem-se uma distribuição de probabilidade discreta que pode ser facilmente tratada pelo método de Monte Carlo. Essa informação deve estar disponível em algum banco de dados para que possa ser utlizada na simulação.
-                  </div>
+            <div class="subsubsecao">
+               Eficiência de produção de fluorescência
+            </div>
+
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Outro parâmetro importante a ser incorporado na modelagem do 
+                  meio é a eficiência de produção de fluorescência, representada 
+                  pela letra grega &omega;, que indica a probabilidade de emitir-se 
+                  um elétron Auger ou um fóton de raios X característicos após a 
+                  produção de uma vacância na eletrosfera como consequência da 
+                  absorção fotoelétrica.
+                  Os trabalhos de Krause (1979), De Boer (1989) e Hubbell et al. 
+                  (1994), entre outros, apresentam modelagens matemáticas para 
+                  determinação das eficiências de produção de fluorescência para 
+                  os principas subníveis de energia (normalmente K, 
+                  L<sub>1-3</sub> e M).
+               </div>
+
+            <div class="subsubsecao">
+               Intensidade dos raios X característicos
+            </div>
+
+               <div class="w3-panel w3-container w3-leftbar borda-ocre">
+                  Aleḿ das seções de choque e das eficiências de produção de 
+                  fluorescência, outra informação importante é a intensidade de 
+                  cada raio x característico que pode ser produzido a partir de 
+                  uma vacância na eletrosfera. Se forem considerados os raios X 
+                  característicos que podem ser emitidos a partir da ionização do 
+                  subnível de energia K, tem-se uma distribuição de probabilidade 
+                  discreta que pode ser facilmente tratada pelo método de Monte Carlo. 
+                  Essa informação deve estar disponível em algum banco de dados para 
+                  que possa ser utlizada na simulação.
+               </div>
 
 
 
@@ -221,44 +336,78 @@ Os trabalhos de Krause (1979), De Boer (1989) e Hubbell et al. (1994), entre out
 
 
 
-            <div class="subsecao">Modelagem formal</div>
-               <div class="w3-panel w3-leftbar borda-ocre">
-                  <p></p>
-               </div>
+         <div class="subsecao">
+            Modelagem formal
+         </div>
+
+            <div class="w3-panel w3-leftbar borda-ocre">
+            </div>
 
 
+         <div class="subsecao">
+            Referências
+         </div>
 
-            <div class="subsecao">Referências</div>
-               <div class="w3-panel w3-leftbar borda-ocre">
-                  <p>Hubbell, J.H., Veigele, Wm. J., Briggs, E.A., Brown, R.T., Cromer, D.T., Howerton, R.J. <i>Atomic form factors, incoherent scattering functions, and photon scattering cross sections</i>. J. Phys. Chem. Ref. Data, v.4, n.3. 1975, p.471-538.</p>
-                  <p>Krause, M.O. <i>Atomic Radiative and Radiationless Yields for K and L Shells</i>. J . Phys. Chem. Ref. Data, v.8, n.2. 1979, p.307-327</p>
-                  <p>Thinh, T.P., Leroux, J. <i>New Basic Empirical Expression for Computing Tables of X-ray Mass Attenuation Coefficients</i>. X-ray Spectrometry, v.8, n.2. 1979, p.85-91.</p>
-                  <p>Saloman, E.B., Hubbell, J.H., Scofield, J.H. <i>X-ray Attenuation Cross Sections for Energies 100 EV to 100 KeV and Elements Z = 1 to Z = 92</i>. Atomic Data and Nuclear Data Tables, v.38, n.1. 1988, p.1-196.</p>
-                  <p>De Boer, D.K.G. <i>Fundamental Parameters for X-ray Fluorescence Analysis</i>. Spectrochimica Acta Part B: Atomic Spectroscopy, v.44, n.11. 1989, p.1171-1190.</p>
-                  <p>Hubbell, J.H., Trehan, P.N., Nirmal Singh, Chand, B., Mehta, D., Garg, M.L., Garg, R.R., Surinder Singh, Puri S. <i>A Review, Bibliography, and Tabulation of K, L, and Higher Atomic Shell X-Ray Fluorescence Yields</i>. J. Phys. Chem. Ref. Data, v.23, n.2. 1994, p.339-364.</p>
-                  <p>Elam, W.T., Ravel, B.D., Sieber, J.R. <i>A New Atomic Database for X-ray Spectroscopic Calculations</i>. Radiation Physics and Chemistry, v.63, n.2. 2002, p.121-128.</p>
-                  <p>Ebel, H., Svagera, R., Ebel, M.F., Shaltout, A., Hubbell, J.H., <i>Numerical description of photoelectric absorption coefficients for fundamental parameter programs</i>. X-Ray Spectrom., v.32. 2003, p.442-451.</p>
-               </div>
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Hubbell, J.H.; Veigele, Wm. J.; Briggs, E.A.; Brown, R.T.; Cromer, D.T.;
+            Howerton, R.J.. <i>Atomic form factors, incoherent scattering functions, 
+            and photon scattering cross sections</i>. J. Phys. Chem. Ref. Data, 
+            v.4, n.3. 1975, p.471-538.
+            </div>
 
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Krause, M.O.. <i>Atomic Radiative and Radiationless Yields for K and 
+            L Shells</i>. J . Phys. Chem. Ref. Data, v.8, n.2. 1979, p.307-327.
+            </div>
 
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Thinh, T.P.; Leroux, J.. <i>New Basic Empirical Expression for Computing 
+            Tables of X-ray Mass Attenuation Coefficients</i>. X-ray Spectrometry, 
+            v.8, n.2. 1979, p.85-91.
+            </div>
 
-            <img uml="
-               Bob->Alice : foo
-               Bob<--Alice : foo
-            ">
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Saloman, E.B.; Hubbell, J.H.; Scofield, J.H.. <i>X-ray Attenuation Cross 
+            Sections for Energies 100 EV to 100 KeV and Elements Z = 1 to Z = 92</i>. 
+            Atomic Data and Nuclear Data Tables, v.38, n.1. 1988, p.1-196.
+            </div>
 
-            <div>
-               When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
-               \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
-               \begin{align}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\end{align}
+            <div class="w3-panel w3-leftbar borda-ocre">
+            De Boer, D.K.G.. <i>Fundamental Parameters for X-ray Fluorescence 
+            Analysis</i>. Spectrochimica Acta Part B: Atomic Spectroscopy, 
+            v.44, n.11. 1989, p.1171-1190.
+            </div>
+
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Hubbell, J.H.; Trehan, P.N.; Nirmal Singh; Chand, B.; Mehta, D.; 
+            Garg, M.L.; Garg, R.R.; Surinder Singh; Puri S.. <i>A Review, Bibliography, 
+            and Tabulation of K, L, and Higher Atomic Shell X-Ray Fluorescence 
+            Yields</i>. J. Phys. Chem. Ref. Data, v.23, n.2. 1994, p.339-364.
+            </div>
+
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Elam, W.T.; Ravel, B.D.; Sieber, J.R.. <i>A New Atomic Database for 
+            X-ray Spectroscopic Calculations</i>. Radiation Physics and Chemistry, 
+            v.63, n.2. 2002, p.121-128.
+            </div>
+
+            <div class="w3-panel w3-leftbar borda-ocre">
+            Ebel, H.; Svagera, R.; Ebel, M.F.; Shaltout, A.; Hubbell, J.H.. 
+            <i>Numerical description of photoelectric absorption coefficients for 
+            fundamental parameter programs</i>. X-Ray Spectrom., v.32. 2003, 
+            p.442-451.
             </div>
 
       </div>
+      <!--conteúdo-->
 
+      <!--rodapé-->
       <footer class="fundo-azul w3-text-white">
          <!--tirar as margens-->
-         <div class="w3-content w3-padding-16">
-               Rodapé
+         <div class="w3-content w3-container w3-padding-16">
+            Departamento de Física Aplicada e Termodinâmica<br>
+            Instituto de Física Armando Dias Tavares<br>
+            Universidade do Estado do Rio de Janeiro
          </div>
       </footer>
    </body>
