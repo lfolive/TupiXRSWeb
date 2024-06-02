@@ -7,3 +7,9 @@
 .fundo-ocre,.fundo-ocre-hover:hover { background-color: #bd8700; }
 .borda-ocre,.borda-ocre-hover:hover { border-color:#bd8700!important; }
 .texto-ocre,.texto-ocre-hover:hover { color:#bd8700!important; }
+.fundo-red,.fundo-red-hover:hover { background-color: #991f00; }
+.borda-red,.borda-red-hover:hover { border-color:#991f00!important; }
+.texto-red,.texto-red-hover:hover { color:#991f00!important; }
+.sticky { position: -webkit-sticky; position: sticky; top: 0; }
+
+

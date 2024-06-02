@@ -24,7 +24,9 @@
       </style>
 
       <script type="text/javascript"
-              src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+              src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
+      </script>
+
       <script type="text/javascript" src="lib/jquery.js"></script>
       <!--<script type="text/javascript" src="lib/jquery_plantuml.js"></script>-->
       <script type="text/javascript" src="lib/jquery_plantuml.js"></script>
@@ -70,27 +72,28 @@
                   <a id="1" href="index.html" 
                      class="w3-bar-item w3-button texto-ocre
                             w3-hover-none 
-                            texto-ocre-hover" style="padding-top:18px;padding-bottom:21px;">
+                            texto-red-hover" 
+                     style="padding-top:18px;padding-bottom:21px;">
                      Início
                   </a>
                   <a id="2" href="processo_modelagem.html"
                      class="w3-bar-item w3-button
                             w3-hover-none
-                            texto-ocre-hover
+                            texto-red-hover
                             w3-hide-small">
                      Metodologia<br>de Modelagem
                   </a>
                   <a id="3" href="mod_material.html"
                      class="w3-bar-item w3-button
                             w3-hover-none 
-                            texto-ocre-hover
+                            texto-red-hover
                             w3-hide-small">
                      Modelagem dos<br>Meios Materiais
                   </a>
                   <a id="4" href="#3"
                      class="w3-bar-item w3-button
                             w3-hover-none 
-                            texto-ocre-hover
+                            texto-red-hover
                             w3-hide-small">
                      Link 3
                   </a>
@@ -157,13 +160,13 @@
 
             <div class="w3-panel w3-leftbar borda-azul">
                Estes simuladores utilizam, em sua maioria, processos como 
-               "histórias" de eventos, isto é, simulam a criação de eventos com 
-               características controladas por distribuições de probabilidade e 
-               acompanham a evolução deste evento. A evolução em si também é função 
-               de distribuições de probabilidade. O final de cada história depende 
-               de condições tais como absorsão, detecção ou perda para o meio e, 
-               ao encerrar uma história, dá-se início a um novo evento (nova 
-               história).
+               "histórias" de eventos, isto é, simulam a criação de eventos 
+               com características controladas por distribuições de 
+               probabilidade e acompanham a evolução deste evento. A evolução 
+               em si também é função de distribuições de probabilidade. 
+               O final de cada história depende de condições tais como 
+               absorsão, detecção ou perda para o meio e, ao encerrar uma 
+               história, dá-se início a um novo evento (nova história).
             </div>
 
             <div class="w3-panel w3-leftbar borda-azul">
@@ -171,19 +174,20 @@
                objetivos, como fonte de dados para planejamento e avaliação de 
                cenários de resultados experimentais, o parâmetro <b>estatística 
                de contagem</b> é sempre um elemento de grande peso, ou seja, o 
-               número de eventos (histórias) deve ser suficientemente grande para 
-               garantir que os resultados obtidos pela simulação possam ser 
-               considerados estatisticamente representativos. Como consequência, o 
-               tempo de processamento, o tempo de simulação, normalmente é elevado.
+               número de eventos (histórias) deve ser suficientemente grande 
+               para garantir que os resultados obtidos pela simulação possam 
+               ser considerados estatisticamente representativos. Como 
+               consequência, o tempo de processamento, o tempo de simulação, 
+               normalmente é elevado.
             </div>
 
             <div class="w3-panel w3-leftbar borda-azul">
-               Para se reduzir este tempo de simulação, mantendo-se a estatística 
-               de contagem, pode-se adotar diferentes estratégias. Neste projeto, 
-               o foco está no uso de processamento paralelo e distribuído pela 
-               implementação de um simulador desenvolvido em linguagem de 
-               programação paralela/distribuída: <b>Charm++</b> (KALE; 
-               ZHENG, 2013). 
+               Para se reduzir este tempo de simulação, mantendo-se a 
+               estatística de contagem, pode-se adotar diferentes estratégias. 
+               Neste projeto, o foco está no uso de processamento paralelo e 
+               distribuído pela implementação de um simulador desenvolvido em 
+               linguagem de programação paralela/distribuída: <b>Charm++</b> 
+               (KALE; ZHENG, 2013). 
             </div>
 
             <div class="w3-panel w3-leftbar borda-azul">
@@ -202,10 +206,10 @@
                <div class="w3-panel w3-leftbar borda-azul">
                   Em um ambiente de computação com $n$ processadores disponíveis, 
                   pode-se executar $n$ histórias simultaneamente. Logo, o tempo 
-                  de processamento paralelizado tende a $T(n)=T(1)/n$, onde $T(1)$ 
-                  é o tempo de execução com 1 processador. A otimização é medida 
-                  como <b>speedup</b> $s$ que é a taxa de "aceleração" do 
-                  processamento:
+                  de processamento paralelizado tende a $T(n)=T(1)/n$, onde 
+                  $T(1)$ é o tempo de execução com 1 processador. A otimização 
+                  é medida como <b>speedup</b> $s$ que é a taxa de "aceleração" 
+                  do processamento:
 
                   <div class="w3-panel w3-leftbar">
                      $s=T(1)/T(n)$.
@@ -252,8 +256,9 @@
                   O speedup $s$ passa a ser expresso como: 
 
                   <div class="w3-panel w3-leftbar">
-                     $s = \dfrac{T(1)[(1-P)+P]}{T(1)\left[(1-P)+\dfrac{P}{n}\right]}=$ 
-                     $\dfrac{1}{(1-P)+\dfrac{P}{n}}=$ $\dfrac{n}{n-(n-1)P}$.
+                     $s = \dfrac{T(1)[(1-P)+P]}{T(1)\left[(1-P)+\dfrac{P}{n}
+                     \right]}=$ $\dfrac{1}{(1-P)+\dfrac{P}{n}}=$ 
+                     $\dfrac{n}{n-(n-1)P}$.
                   </div>
 
                   Esta análise é conhecida como <b>argumento de Amdahl</b> ou 
@@ -277,13 +282,15 @@
                </div>
 
                <div class="w3-row-padding">
-                  <div class="w3-col m6 w3-card w3-margin w3-center" style="width:45%">
+                  <div class="w3-col m6 w3-card w3-margin w3-center" 
+                       style="width:45%">
                      <img src="images/speedup.png" style="width:100%">
                      <div class="w3-container">
                         <p>Figura 1. </p>
                      </div>
                   </div>
-                  <div class="w3-col m6 w3-card w3-margin w3-center" style="width:45%">
+                  <div class="w3-col m6 w3-card w3-margin w3-center" 
+                       style="width:45%">
                      <img src="images/speedup2.png" style="width:100%">
                      <div class="w3-container">
                         <p>Figura 2. </p>
@@ -299,7 +306,7 @@
 
                   <div class="w3-panel w3-leftbar">
                      $s=\dfrac{T(1)}{T(n)} = \dfrac{S+M+P}{S+nM+\dfrac{P}{n}}$,
-               </div>
+                  </div>
 
                   onde $S=T_s/T(1)$ é a fração serial, $M=T_m/T(1)$ é a fração 
                   na comunicação de uma mensagem e $P=T_p/T(1)$ é a fração 
@@ -323,11 +330,9 @@
             <div class="w3-panel w3-leftbar borda-azul">
                Kale, L. V., Zheng, G. 
                <i>The Charm++ Programming Model</i>.
-               In: Parallel Science and Engineering Applications: The Charm++ Approach,
-               Kale, Laxmikant V. and Bhatele, Abhinav (Org.), 
-               ch. 1, 
-               p. 1-16. 
-               Boca Raton, FL, USA: CRC Press, Inc., 2013. 
+               In: Parallel Science and Engineering Applications: The Charm++ 
+               Approach, Kale, Laxmikant V. and Bhatele, Abhinav (Org.), ch. 1, 
+               p. 1-16. Boca Raton, FL, USA: CRC Press, Inc., 2013. 
                <a href="https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf">
                   https://charm.cs.illinois.edu/newPapers/13-46/paper.pdf
                </a>
@@ -336,8 +341,9 @@
             <div class="w3-panel w3-leftbar borda-azul">
                Al-hayanni, M.A.N., Xia, F., Rafiev, A., 
                Romanovsky, A., Shafik, R. and Yakovlev, A.
-               <i>Amdahl's law in the context of heterogeneous many-core systems: a survey</i>. 
-               IET Comput. Digit. Tech., v.14, n.4, p.133-148. 2020.
+               <i>Amdahl's law in the context of heterogeneous many-core 
+               systems: a survey</i>. IET Comput. Digit. Tech., v.14, n.4, 
+               p.133-148. 2020.
                <a href="https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220">
                   https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-cdt.2018.5220
                </a>
